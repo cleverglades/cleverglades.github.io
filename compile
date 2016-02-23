@@ -11,6 +11,6 @@ fi
 echo '[INFO] Compiling content into content dir'
 rm -rf "$JS"
 mkdir "$JS"
-cp -r "$LIB/*" "$JS/*"
+cp -r "$LIB"/* "$JS"/*
 git add "$JS"
 echo '[INFO] Done compiling'
