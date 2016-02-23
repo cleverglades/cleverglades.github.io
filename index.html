@@ -12,9 +12,9 @@
 <script>
   riot.mount('*')
   riot.route(function(a,b,c) {
+    window.history.pushState(a,a, '/'+a);
     console.log(a,b,c);
   })
-  riot.route.base('/app');
 </script>
 
 </body>
