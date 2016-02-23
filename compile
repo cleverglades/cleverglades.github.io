@@ -1,17 +1,16 @@
 #!/bin/bash
 ROOT="$(git rev-parse --show-toplevel)"
-CONTENT="$ROOT/content"
+JS="$ROOT/js"
 LIB="$ROOT/lib"
 STATIC="$ROOT/static"
-if [ "$CONTENT" = "/content" ]; then
+if [ "$JS" = "/js" ]; then
   echo "[ERROR] we failed to get the root directory of the repo before modifying"
   exit 1
 fi
 
 echo '[INFO] Compiling content into content dir'
-rm -rf "$CONTENT"
-mkdir "$CONTENT"
-cp -r "$STATIC"/* "$CONTENT/"
-cp -r "$LIB" "$CONTENT/"
-git add "$CONTENT"
+rm -rf "$JS"
+mkdir "$JS"
+cp -r "$LIB" "$JS/"
+git add "$JS"
 echo '[INFO] Done compiling'
