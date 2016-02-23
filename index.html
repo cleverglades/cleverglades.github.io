@@ -11,6 +11,10 @@
 <script src="js/compiled-tags.js"></script>
 <script>
   riot.mount('*')
+  riot.router(function(a,b,c) {
+    console.log(a,b,c);
+  })
+  riot.route.base('/app');
 </script>
 
 </body>
