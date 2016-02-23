@@ -10,8 +10,14 @@ echo '#!/bin/bash
 if [ "$POSTCOMMITING" != 1 ]; then
   ROOT="$(git rev-parse --show-toplevel)"
   export POSTCOMMITING=1
-  exec $ROOT/compile
-  git commit -a -m "commit made by autocompile post-commit"
+  "$ROOT/compile"
+  if [ "$?" = "0" ]; then
+    git commit -a -m "commit made by autocompile post-commit"
+    echo "[INFO] post commit compile and recommit successful"
+  else
+    echo "[ERROR] post commit compile and recommit failed"
+    exit 1
+  fi
 fi' > $POSTCOMMIT 
 
 chmod 755 $POSTCOMMIT
