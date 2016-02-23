@@ -12,9 +12,10 @@
 <script>
   riot.mount('*')
   riot.route(function(a,b,c) {
-    window.history.pushState(a,a, '/'+a);
+    riot.route(a,'PAGE: '+a);
     console.log(a,b,c);
   })
+  riot.route.start(true);
 </script>
 
 </body>
