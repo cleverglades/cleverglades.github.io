@@ -1,8 +1,19 @@
 #!/bin/bash
+if ! which node > /dev/null ; then
+  echo "[ERROR] node.js required to compile, please install node.js to your system"
+  exit 1
+fi
+if ! which riot > /dev/null; then
+  echo "[ERROR] riot required for compile, please install riot (npm install -g riot)"
+  exit 1
+fi
+
 ROOT="$(git rev-parse --show-toplevel)"
 JS="$ROOT/js"
 LIB="$ROOT/lib"
 STATIC="$ROOT/static"
+TAGS="$ROOT/tags"
+TAGJS="$JS/compiled-tags.js"
 if [ "$JS" = "/js" ]; then
   echo "[ERROR] we failed to get the root directory of the repo before modifying"
   exit 1
@@ -12,5 +23,6 @@ echo '[INFO] Compiling content into content dir'
 rm -rf "$JS"
 mkdir "$JS"
 cp -r "$LIB"/* "$JS/"
+riot $TAGS $TAGJS
 git add "$JS"
 echo '[INFO] Done compiling'

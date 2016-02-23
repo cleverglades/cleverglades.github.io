@@ -1,1 +1,3 @@
-# cleverglades.github.io YEAH YEAH
+# cleverglades.github.io
+run compile when changes are made
+js directory is generated
