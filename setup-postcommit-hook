@@ -1,0 +1,16 @@
+#!/bin/bash
+ROOT="$(git rev-parse --show-toplevel)"
+HOOKS="$ROOT/.git/hooks"
+POSTCOMMIT="$HOOKS/post-commit"
+if [ "$HOOKS" = '/.git/hooks' ]; then
+  echo "ROOT DIRECTORY FAILED TO BE FOUND"
+  exit 1
+fi
+echo '#!/bin/bash
+if [ "$POSTCOMMITING" != 1 ]; then
+  ROOT="$(git rev-parse --show-toplevel)"
+  export POSTCOMMITING=1
+  exec $ROOT/compile
+  git commit -a -m "commit made by autocompile post-commit"' > $POSTCOMMIT 
+
+chmod 755 $POSTCOMMIT
