@@ -12,6 +12,6 @@ if [ "$POSTCOMMITING" != 1 ]; then
   export POSTCOMMITING=1
   exec $ROOT/compile
   git commit -a -m "commit made by autocompile post-commit
-fi"' > $POSTCOMMIT 
+fi' > $POSTCOMMIT 
 
 chmod 755 $POSTCOMMIT
