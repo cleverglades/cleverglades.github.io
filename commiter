@@ -1,0 +1,5 @@
+#!/bin/bash
+a=$(cat modifier)
+echo $((a+1)) > modifier
+git commit -a -m 'testing'
+git push
