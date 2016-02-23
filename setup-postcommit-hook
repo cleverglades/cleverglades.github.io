@@ -11,7 +11,7 @@ if [ "$POSTCOMMITING" != 1 ]; then
   ROOT="$(git rev-parse --show-toplevel)"
   export POSTCOMMITING=1
   exec $ROOT/compile
-  git commit -a -m "commit made by autocompile post-commit
+  git commit -a -m "commit made by autocompile post-commit"
 fi' > $POSTCOMMIT 
 
 chmod 755 $POSTCOMMIT
