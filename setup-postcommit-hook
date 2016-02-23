@@ -12,7 +12,6 @@ if [ "$POSTCOMMITING" != 1 ]; then
   export POSTCOMMITING=1
   "$ROOT/compile"
   if [ "$?" = "0" ]; then
-    git commit -a -m "commit made by autocompile post-commit"
     echo "[INFO] post commit compile and recommit successful"
   else
     echo "[ERROR] post commit compile and recommit failed"
